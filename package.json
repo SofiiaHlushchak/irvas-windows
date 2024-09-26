@@ -1,0 +1,27 @@
+{
+	"name": "window",
+	"version": "1.0.0",
+	"description": "",
+	"main": "gulpfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"browserslist": [
+		"> 1%",
+		"not dead"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.4",
+		"babel": "^6.23.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^9.2.1",
+		"browser-sync": "^3.0.3",
+		"core-js": "^3.38.1",
+		"gulp": "^5.0.0",
+		"webpack": "^5.95.0",
+		"webpack-stream": "^7.0.0"
+	}
+}
