@@ -6,9 +6,11 @@ import browsersync from "browser-sync";
 import { deleteAsync } from "del";
 
 const dist = "./dist/";
+// const dist = "/Applications/MAMP/htdocs/test";
 
 export const clean = () => {
     return deleteAsync([dist]);
+    // return deleteAsync([dist], { force: true });
 };
 
 export const copyHtml = () => {
