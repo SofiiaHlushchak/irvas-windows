@@ -3,6 +3,7 @@ import modals from "./modules/modals.js";
 import tabs from "./modules/tabs.js";
 import forms from "./modules/forms.js";
 import changeModalState from "./modules/changeModalState.js";
+import timer from "./modules/timer.js";
 
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
@@ -11,12 +12,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const modalInfo = {
         currentModal: null,
     };
+    let deadline = "2024-12-31";
 
     changeModalState(modalState);
 
     modals((modal) => {
         modalInfo.currentModal = modal;
-        console.log("Current Modal:", modalInfo.currentModal);
     });
 
     tabs(".glazing_slider ", ".glazing_block", ".glazing_content", "active");
@@ -33,6 +34,8 @@ window.addEventListener("DOMContentLoaded", () => {
         "do_image_more",
         "inline-block"
     );
-    console.log(modalInfo);
+
     forms(modalState, modalInfo);
+
+    timer(".container1", deadline);
 });
