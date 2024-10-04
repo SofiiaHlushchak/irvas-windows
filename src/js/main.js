@@ -8,9 +8,17 @@ window.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     let modalState = {};
+    const modalInfo = {
+        currentModal: null,
+    };
 
     changeModalState(modalState);
-    modals();
+
+    modals((modal) => {
+        modalInfo.currentModal = modal;
+        console.log("Current Modal:", modalInfo.currentModal);
+    });
+
     tabs(".glazing_slider ", ".glazing_block", ".glazing_content", "active");
     tabs(
         ".decoration_slider",
@@ -25,6 +33,6 @@ window.addEventListener("DOMContentLoaded", () => {
         "do_image_more",
         "inline-block"
     );
-
-    forms(modalState);
+    console.log(modalInfo);
+    forms(modalState, modalInfo);
 });

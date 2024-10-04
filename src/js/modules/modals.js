@@ -1,4 +1,4 @@
-const modals = () => {
+const modals = (setCurrentModal) => {
     function bindModal(
         triggerSelector,
         modalSelector,
@@ -22,6 +22,7 @@ const modals = () => {
 
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
+                setCurrentModal(modal);
             });
         });
 
