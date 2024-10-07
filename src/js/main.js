@@ -1,10 +1,11 @@
 import "./slider.js";
-import modals from "./modules/modals.js";
+import { modals } from "./modules/modals.js";
 import tabs from "./modules/tabs.js";
 import forms from "./modules/forms.js";
 import changeModalState from "./modules/changeModalState.js";
 import timer from "./modules/timer.js";
 import images from "./modules/images.js";
+import scrollAnimations from "./modules/scrollAnimations.js";
 
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
@@ -40,4 +41,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
     timer(".container1", deadline);
     images();
+    scrollAnimations("section");
 });

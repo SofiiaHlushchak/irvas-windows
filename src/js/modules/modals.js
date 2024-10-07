@@ -8,7 +8,8 @@ const modals = (setCurrentModal) => {
         const triggers = document.querySelectorAll(triggerSelector),
             modal = document.querySelector(modalSelector),
             close = document.querySelector(closeSelector),
-            windows = document.querySelectorAll("[data-modal]");
+            windows = document.querySelectorAll("[data-modal]"),
+            scroll = calcScroll();
 
         triggers.forEach((item) => {
             item.addEventListener("click", (e) => {
@@ -22,6 +23,7 @@ const modals = (setCurrentModal) => {
 
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
+                document.body.style.marginRight = `${scroll}px`;
                 setCurrentModal(modal);
             });
         });
@@ -31,8 +33,7 @@ const modals = (setCurrentModal) => {
                 window.style.display = "";
             });
 
-            modal.style.display = "none";
-            document.body.style.overflow = "";
+            closeModal(modal);
         });
 
         modal.addEventListener("click", (e) => {
@@ -41,8 +42,7 @@ const modals = (setCurrentModal) => {
                     window.style.display = "";
                 });
 
-                modal.style.display = "none";
-                document.body.style.overflow = "";
+                closeModal(modal);
             }
         });
     }
@@ -52,6 +52,21 @@ const modals = (setCurrentModal) => {
             document.querySelector(selector).style.display = "block";
             document.body.style.overflow = "hidden";
         }, time);
+    }
+
+    function calcScroll() {
+        let div = document.createElement("div");
+
+        div.style.width = "50px";
+        div.style.height = "50px";
+        div.style.overflowY = "scroll";
+        div.style.visibility = "hidden";
+
+        document.body.appendChild(div);
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+        div.remove();
+
+        return scrollWidth;
     }
 
     bindModal(
@@ -76,4 +91,11 @@ const modals = (setCurrentModal) => {
     // showModalByTime(".popup", 3000);
 };
 
-export default modals;
+const closeModal = (modal) => {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+    document.body.style.marginRight = `0px`;
+    setCurrentModal(null);
+};
+
+export { modals, closeModal };
