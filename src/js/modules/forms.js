@@ -1,4 +1,5 @@
 import checkNumInputs from "./checkNumInputs.js";
+import { closeModal } from "./modals.js";
 
 const forms = (state, modalInfo) => {
     const forms = document.querySelectorAll("form"),
@@ -27,11 +28,6 @@ const forms = (state, modalInfo) => {
             input.value = "";
         });
     };
-
-    function closeModal(modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "";
-    }
 
     forms.forEach((form) => {
         form.addEventListener("submit", (e) => {
@@ -64,7 +60,6 @@ const forms = (state, modalInfo) => {
                     }, 3000);
                     setTimeout(() => {
                         if (modalInfo.currentModal !== null) {
-                            console.log("goof");
                             closeModal(modalInfo.currentModal);
                         }
                     }, 4000);
